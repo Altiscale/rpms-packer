@@ -28,3 +28,7 @@ install -D -m 0644  %{_tmppath}/packer.sh %{buildroot}/etc/profile.d/packer.sh
 /opt/packer
 /opt/packer/*
 /etc/profile.d/packer.sh
+
+%changelog
+ * Tue Oct 17 2017 Karthik <karthik@altiscale.com> 1.1.1-2
+  - Use install command
