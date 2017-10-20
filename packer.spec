@@ -33,7 +33,7 @@ ln -s /opt/packer/bin/%{name} %{buildroot}/%{_bindir}
 /usr/bin/%{name}
 
 %changelog
- * Tue Oct 20 2017 Karthik <karthik@altiscale.com> 1.1.1-2
+ * Tue Oct 20 2017 Karthik <karthik@altiscale.com> 1.1.1-3
   - for non-login shell
  * Tue Oct 17 2017 Karthik <karthik@altiscale.com> 1.1.1-2
   - Use install command
