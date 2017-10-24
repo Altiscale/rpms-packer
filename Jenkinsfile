@@ -2,7 +2,7 @@ pipeline{
     agent any
     stages {
         stage('Git') {
-            steps { 
+            steps {
               git branch: 'alti6', url: 'https://github.com/Altiscale/rpms-packer.git'
             }
         }
@@ -22,13 +22,23 @@ pipeline{
 
                   # download
                   spectool -S packer.spec | awk '{print "wget",$NF}' | bash
-                    
+
                   # name
                   name=`spectool -S packer.spec  | awk -F/ '{print $NF}'`
-                    
-                  alti_mock build -r centos6.7-x86_64 -s packer.spec -S ${name}                  
+
+                  alti_mock build -r centos6.7-x86_64 -s packer.spec -S ${name}
                 '''
             }
+        }
+        stage('publish') {
+            steps {
+                archiveArtifacts '*.rpm'
+            }
+        }
+    }
+    post {
+        failure {
+            slackSend (color: '#00FF00', message: "FAIL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
         }
     }
 }
