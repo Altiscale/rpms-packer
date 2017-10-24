@@ -9,7 +9,7 @@ pipeline{
         stage('install alti build tools') {
             steps{
                 sh '''
-                  source $(rvm use --install --create 2.3.3@packer-rpm do rvm env --path)
+                  source $(rvm use --install --create 2.3.5@packer-rpm do rvm env --path)
                   gem install alti_build_tools'''
             }
         }
